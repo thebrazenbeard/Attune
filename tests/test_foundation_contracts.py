@@ -20,6 +20,16 @@ class RelationshipInfluenceFirewallTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "commercial"):
             validate_influence_decision(decision)
 
+    def test_commercial_signal_cannot_be_laundered_as_relationship_input(self):
+        decision = InfluenceDecision(
+            behavior="AFFECTION_INTENSITY",
+            reason="relationship state changed",
+            relationship_inputs=("CHURN_RISK",),
+            commercial_inputs=(),
+        )
+        with self.assertRaisesRegex(ValueError, "commercial"):
+            validate_influence_decision(decision)
+
     def test_initiative_requires_traceable_noncommercial_reason(self):
         decision = InfluenceDecision(
             behavior="INITIATIVE",
