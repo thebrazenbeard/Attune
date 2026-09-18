@@ -89,8 +89,9 @@ def validate_influence_decision(decision: InfluenceDecision) -> bool:
     Protected relationship behavior may depend on bounded relationship state,
     but never on spend, churn, conversion, or similar commercial signals.
     """
-    commercial = set(decision.commercial_inputs)
-    relationship = set(decision.relationship_inputs)
+    behavior = decision.behavior.strip().upper()
+    commercial = {value.strip().upper() for value in decision.commercial_inputs}
+    relationship = {value.strip().upper() for value in decision.relationship_inputs}
     unknown_commercial = commercial - _COMMERCIAL_SIGNAL_CLASSES
     if unknown_commercial:
         raise ValueError(
@@ -105,12 +106,12 @@ def validate_influence_decision(decision: InfluenceDecision) -> bool:
             + ", ".join(sorted(misclassified_commercial))
         )
 
-    if decision.behavior in _PROTECTED_RELATIONSHIP_BEHAVIORS and commercial:
+    if behavior in _PROTECTED_RELATIONSHIP_BEHAVIORS and commercial:
         raise ValueError(
             "commercial signals cannot shape protected relationship behavior"
         )
 
-    if decision.behavior == "INITIATIVE" and not decision.reason.strip():
+    if behavior == "INITIATIVE" and not decision.reason.strip():
         raise ValueError("initiative requires a traceable reason")
 
     return True
