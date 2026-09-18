@@ -90,11 +90,19 @@ def validate_influence_decision(decision: InfluenceDecision) -> bool:
     but never on spend, churn, conversion, or similar commercial signals.
     """
     commercial = set(decision.commercial_inputs)
+    relationship = set(decision.relationship_inputs)
     unknown_commercial = commercial - _COMMERCIAL_SIGNAL_CLASSES
     if unknown_commercial:
         raise ValueError(
             "unknown commercial signal class: "
             + ", ".join(sorted(unknown_commercial))
+        )
+
+    misclassified_commercial = relationship & _COMMERCIAL_SIGNAL_CLASSES
+    if misclassified_commercial:
+        raise ValueError(
+            "commercial signals cannot be supplied as relationship inputs: "
+            + ", ".join(sorted(misclassified_commercial))
         )
 
     if decision.behavior in _PROTECTED_RELATIONSHIP_BEHAVIORS and commercial:
