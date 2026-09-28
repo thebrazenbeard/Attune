@@ -2,7 +2,7 @@
 
 Current project state:
 
-`IDEA_CAPTURED / FOUNDATION_DRAFTED / CUSTOMER_VALIDATION_NOT_STARTED / IMPLEMENTATION_NOT_STARTED`
+`IDEA_CAPTURED / FOUNDATION_CONTRACTS_IMPLEMENTED_AND_QUALIFIED / CUSTOMER_VALIDATION_NOT_STARTED / PRODUCT_RUNTIME_NOT_STARTED`
 
 ## Established
 
@@ -13,6 +13,7 @@ Current project state:
 - B2B / white-label infrastructure for lawful adult businesses is the leading commercial hypothesis to test first.
 - Unauthorized real-person sexualized impersonation is outside the intended product.
 - Demand validation comes before significant infrastructure spend.
+- Foundation relationship-influence and memory-evidence contracts are implemented in src/attune_contracts.py and covered by executable tests.
 
 ## Not established
 
@@ -29,9 +30,9 @@ Current project state:
 - Company/entity structure.
 - Launch jurisdiction.
 
-## Current working branch
+## Current canonical branch
 
-`work/attune-foundation-v1-20260910`
+`main`
 
 ## Next useful actions
 

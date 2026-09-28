@@ -3,8 +3,9 @@ name: qualify-foundation-contracts
 on:
   push:
     branches:
-      - one/attune-foundation-contracts-v1
+      - main
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
