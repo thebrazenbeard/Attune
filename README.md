@@ -49,6 +49,24 @@ That is a hypothesis, not a committed go-to-market decision. This repository exi
 
 ## Current status
 
-`IDEA_CAPTURED / PRODUCT_THESIS_FORMING / CUSTOMER_VALIDATION_NOT_STARTED / NO_COMMERCIAL_COMMITMENT`
+`IDEA_CAPTURED / FOUNDATION_CONTRACTS_IMPLEMENTED / CUSTOMER_VALIDATION_NOT_STARTED / PRODUCT_RUNTIME_NOT_STARTED / NO_COMMERCIAL_COMMITMENT`
 
 No company, paid infrastructure, deployment, model-provider commitment, pricing, legal conclusion, or production system is established by this repository.
+
+
+## Foundation contract validation
+
+The implemented code is a bounded foundation-contract layer, not the Attune
+product runtime. CI qualifies the relationship-influence firewall and
+memory-evidence reconciliation contracts with Python 3.12.
+
+POSIX / Git Bash:
+
+    PYTHONPATH=src python -m unittest discover -s tests -v
+    python -m compileall -q src tests
+
+Windows PowerShell:
+
+    $env:PYTHONPATH='src'
+    py -3 -m unittest discover -s tests -v
+    py -3 -m compileall -q src tests
