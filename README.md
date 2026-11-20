@@ -75,3 +75,9 @@ Windows PowerShell:
 ## Workspace startup safety (source scope)
 
 The concealed VS Code `folderOpen` task was removed, automatic workspace tasks were set to `"off"`, and JavaScript disguised as `public/fonts/fa-solid.lkf` was removed from current source. `tests/test_workspace_startup_safety.py` and read-only CI guard that known editor-startup vector. Historical source retains provenance; do not execute the removed payload. No conclusion follows about host processes, older checkouts, editor extensions, user-level VS Code settings, or other startup surfaces.
+
+## Editor startup containment — tracked source (2026-11-20)
+
+The tracked `main` source formerly contained a concealed VS Code `folderOpen` Node task invoking `.vscode/ini`. The task list is now empty, `task.allowAutomaticTasks` is explicitly `"off"`, and the disguised executable has been removed from the current tree. The Git history is retained for provenance.
+
+**Limits:** This is source-only containment, not proof that a user's older checkout, editor extensions, global settings, host processes or credentials are safe. Prior execution is unknown; do not execute historical suspect assets.
